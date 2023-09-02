@@ -11,3 +11,60 @@ body{
   width: 100%;
   background-color: brown;
 }
+
+.Main{
+  height: 100px;
+  width: 100%;
+  justify-content: center;
+  padding-top: 5px;
+  padding-left: 300px;
+  border: 2PX SOLID blue;
+  background-color: rgb(230, 167, 9);
+}
+
+h1{
+  font-style: oblique;
+  padding-top: 10px;
+  word-spacing: 7px;
+  letter-spacing: 5px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.div-2{
+
+  height: 70px;
+  width: 100%;
+}
+
+
+.wrraper{
+  justify-content: center;
+  display: flex;
+  height: 50px;
+  padding-bottom: 14px;
+  padding-top: 9px;
+  gap: 10px;
+  background-color: rgba(219, 146, 10, 0.79);
+}
+
+.num{
+  width: 50px;
+  border-radius: 30px;
+  
+}
+
+.text-1{
+
+  width: 160px;
+  border-radius: 15px;
+  border-color: black;
+  height: 30px;
+}
+
+button{
+
+  width: 60px;
+  border-radius: 40px;
+  background-color: aqua;
+  font-size: 20px;
+}
