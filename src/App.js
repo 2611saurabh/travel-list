@@ -28,16 +28,40 @@ function Logo(){
 
 function Form() {
   return(
-    <div className="add-form">
+    <form className="add-form">
       <h3>What do you need for your 😍 trip ?</h3>
-    </div>
+      <select name="" id="">
+        <option value={1}>1</option>
+        <option value={2}>2</option>
+        <option value={3}>3</option>
+      </select>
+      <input type="text" placeholder="Item..."/>
+    </form>
   )
 }
 
 function PackingList() {
   return (
-    <div className="list"></div>
+      <div className="list">
+        <ul>
+          {initialItems.map((item/**this argument of callback function  */) => (
+            <Item/**name of component which we declare */ item/**this will be name 
+            of props */={item/**object  */} />
+            ))}
+        </ul>
+     </div>
   )
+}
+
+function Item({item})
+{
+  return <li>
+      <span style={item.packed ? {textDecoration: "line-through"} : {}}>
+          {" "}
+          {item.quantity} {item.description}
+      </span>
+      <button>❌&times;</button>
+    </li>
 }
 
 
