@@ -35,7 +35,7 @@ function Form() {
         <option value={2}>2</option>
         <option value={3}>3</option>
       </select>
-      <input type="text" placeholder="Iteem.."/>
+      <input type="text" placeholder="Iteemmm.."/>
       <button>Add</button>
     </form>
   )
