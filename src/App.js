@@ -1,78 +1,118 @@
+import { useState } from "react";
+
 const initialItems = [
   { id: 1, description: "Passports", quantity: 2, packed: false },
-  { id: 2, description: "Socks", quantity: 12, packed: false },
+  { id: 2, description: "Socks", quantity: 12, packed: true },
+  { id: 3, description: "Charger", quantity: 1, packed: false },
 ];
 
 
 
-export default function App() {
-  return(
+export default function App(){
+  return (
     <div className="app">
       <Logo />
       <Form />
       <PackingList />
       <Stats />
     </div>
-  )
+  );
+
 }
+//Logo 2.Form 3. Packing List 4. Stats
 
 
-
-//making compoment for webpage
-
-
+//logo function'
 function Logo(){
-  return <h1>🌴 Far Away 💼</h1>
+
+  return <h1>🌴FAR AWAY💼</h1>
 }
 
 
-function Form() {
-  return(
-    <form className="add-form">
-      <h3>What do you need for your 😍 trip ?</h3>
-      <select name="" id="">
-        <option value={1}>1</option>
-        <option value={2}>2</option>
-        <option value={3}>3</option>
-      </select>
-      <input type="text" placeholder="Iteemmm.."/>
-      <button>Add</button>
-    </form>
-  )
-}
+//form function
 
-function PackingList() {
+function Form(){
+  const [description, setDescription] = useState("");
+  const [quantiy, setQuantity] = useState(1);
+
+  function handleSubmit(e){
+
+    e.preventDefault();
+
+    if(!description) return;
+    const newItem = {description, quantiy, packed:false, id:Date.now()};
+    console.log(newItem);
+
+    setDescription('')
+    setQuantity(1);
+  }
   return (
-      <div className="list">
-        <ul>
-          {initialItems.map((item/**this argument of callback function  */) => (
-            <Item/**name of component which we declare */ item/**this will be name 
-            of props */={item/**object  */} />
-            ))}
-        </ul>
-     </div>
+      <form className="add-form" onSubmit={handleSubmit}>
+      <h3>What do you need for your 😊 Trip?</h3>
+      <select value={quantiy} onChange={(e) => setQuantity(Number(e.target.value))}>
+        {Array.from({length : 20}, (_,i) => i + 1).map
+        ((num) => (
+          <option value = {num} key = {num}>
+            {num}
+          </option>
+          ))}
+      
+      </select>
+      <input type="text" placeholder="Item..." value = {description}
+      onChange={(e) => 
+        setDescription(e.target.value)}/>
+      <button>Add</button>
+      </form>
+  );
+}
+
+
+//Packaging List
+
+function PackingList(){
+  return (
+    <div className="list">
+      <ul>
+        {initialItems.map((item) => (
+        <Item item ={item} key = {item.id} />
+
+        ))}
+      </ul>
+    </div>
+  );
+  
+}
+
+
+
+function Item({item}){
+
+  return (
+    <li>
+      <span style={item.packed ? {textDecoration: "Line-through"} : {}}>
+        {item.quantity} {item.description}
+      </span>
+      <button>❌</button>
+    </li>
   )
 }
 
-function Item({item})
-{
-  return <li>
-      <span style={item.packed ? {textDecoration: "line-through"} : {}}>
-          {" "}
-          {item.quantity} {item.description}
-      </span>
-      <button>❌&times;</button>
-    </li>
-}
 
 
-function Stats() {
+//stats
+
+function Stats(){
+
   return (
     <footer className="stats">
-      <em>💼 You Have X items on your list, and you already packed X (X%)</em>
+      <em>You have X items on your list, and you already packed X (X%)</em>
+      
     </footer>
   )
 }
+
+
+
 
 
 
