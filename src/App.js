@@ -48,7 +48,7 @@ function Form(){
   }
   return (
       <form className="add-form" onSubmit={handleSubmit}>
-      <h3>What do you need for your 😊 Trip?</h3>
+      <h3>What do you need for your😊Trip?</h3>
       <select value={quantiy} onChange={(e) => setQuantity(Number(e.target.value))}>
         {Array.from({length : 20}, (_,i) => i + 1).map
         ((num) => (
